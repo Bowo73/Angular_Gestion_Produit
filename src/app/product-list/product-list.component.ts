@@ -1,4 +1,3 @@
-// product-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
@@ -23,4 +22,6 @@ export class ProductListComponent implements OnInit {
     // Redirection vers la page de détail avec l'ID du produit
     this.router.navigate(['/product-detail', productId]);
   }
+
+
 }

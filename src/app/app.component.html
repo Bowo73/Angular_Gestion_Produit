@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<div>
-  <router-outlet></router-outlet>
-</div>
+<header>
+  <h1>Mon Application Angular</h1>
+</header>
 <nav>
   <ul>
-    <li><a routerlink="/products">Liste des produits</a></li>
-    <li><a routerlink="/product-detail">Détail d'un produit</a></li>
-
+    <li><a routerLink="/">Accueil</a></li>
+    <li><a routerLink="/products">Liste des Produits</a></li>
   </ul>
 </nav>
+<router-outlet></router-outlet>
