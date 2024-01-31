@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<!-- product-list.component.html -->
+
+<h2>Liste des Produits</h2>
+
+<ul>
+  <li *ngFor="let product of products$ | async" (click)="redirectToDetailPage(product.id)">
+    {{ product.nom }} - {{ product.texture }}
+  </li>
+</ul>
+
+<button (click)="redirectToDetailPage(0)">Créer</button>
+
