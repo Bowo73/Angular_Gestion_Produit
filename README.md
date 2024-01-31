@@ -1,4 +1,6 @@
 # GestionProduits
+Ce projet est celui de Rafik BOUKHEMIRI et Brice Trappler
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
 
