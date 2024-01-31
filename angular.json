@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/app"]
+            },
             "outputPath": "dist/gestion-produits",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -30,8 +33,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/product-detail/product-detail.component.scss",
+              "src/app/product-list/product-list.component.scss"
             ],
+
             "scripts": []
           },
           "configurations": {

@@ -1,0 +1,47 @@
+/* product-detail.component.scss */
+
+/* Conteneur principal */
+.product-detail-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Styles pour les détails du produit */
+.product-detail {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+
+  /* Utilisation de flexbox pour aligner les éléments */
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  span {
+    margin-bottom: 10px;
+  }
+}
+
+/* Bouton d'enregistrement */
+.save-button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #45a049;
+  }
+}
+
+/* Styles pour le message si aucun produit n'est trouvé */
+.product-not-found {
+  font-style: italic;
+  color: #999;
+}

@@ -1,1 +1,22 @@
-<p>product-detail works!</p>
+<!DOCTYPE html>
+
+<div class="product-detail-container" *ngif="product">
+  <form>
+    <label for="productName">Nom:</label>
+    <input id="productName" [(ngModel)]="product.nom" name="productName" required maxlength="100">
+
+    <label for="productTexture">Texture:</label>
+    <input id="productTexture" [(ngModel)]="product.texture" name="productTexture" required maxlength="50">
+
+    <label for="productGrammage">Grammage:</label>
+    <input id="productGrammage" [(ngModel)]="product.grammage" name="productGrammage" type="number" required min="10" max="1000">
+
+    <label for="productColor">Couleur:</label>
+    <input id="productColor" [(ngModel)]="product.couleur" name="productColor" maxlength="25">
+  </form>
+
+  <button class="save-button" (click)="saveProduct()">Enregistrer</button>
+
+</div>
+
+<div class="product-not-found" *ngif="!product">Produit non trouvé.</div>
