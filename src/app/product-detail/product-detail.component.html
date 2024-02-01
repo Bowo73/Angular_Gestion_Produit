@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<div class="product-detail-container" *ngif="product">
+<div class="product-detail-container" *ngIf="product">
   <form>
     <label for="productName">Nom:</label>
     <input id="productName" [(ngModel)]="product.nom" name="productName" required maxlength="100">
@@ -19,4 +19,4 @@
 
 </div>
 
-<div class="product-not-found" *ngif="!product">Produit non trouvé.</div>
+<div class="product-not-found" *ngIf="!product">Produit non trouvé.</div>
