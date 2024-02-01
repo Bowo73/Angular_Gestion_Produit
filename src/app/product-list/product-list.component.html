@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <h2>Liste des Produits</h2>
 
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="productName">Nom du produit :</label>
+    <input id="productName" formControlName="productName">
+  </div>
+  <div>
+    <label for="productTexture">Texture du produit :</label>
+    <input id="productTexture" formControlName="productTexture">
+  </div>
+  <div>
+    <label for="productGrammage">Grammage du produit :</label>
+    <input id="productGrammage" formControlName="productGrammage">
+  </div>
+  <div>
+    <label for="productColor">Couleur du produit</label>
+    <input id="productColor" formControlName="productColor">
+  </div>
+  <button type="submit" [disabled]="!productForm.valid">Sauvegarder</button>
+</form>
+
 <ul>
   <li *ngFor="let product of products$ | async">
     {{ product.nom }}
