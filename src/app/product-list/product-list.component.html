@@ -3,6 +3,10 @@
 
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
   <div>
+    <label for="productId">Id du produit :</label>
+    <input id="productId" formControlName="productId">
+  </div>
+  <div>
     <label for="productName">Nom du produit :</label>
     <input id="productName" formControlName="productName">
   </div>
@@ -23,7 +27,7 @@
 
 <ul>
   <li *ngFor="let product of products$ | async">
-    {{ product.nom }}
-    <button (click)="redirectToDetailPage(product.id)">Voir Détails</button>
+    {{ product.productName }}
+    <button (click)="redirectToDetailPage(product.productId)">Voir Détails</button>
   </li>
 </ul>

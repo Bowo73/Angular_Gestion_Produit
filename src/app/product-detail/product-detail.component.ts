@@ -28,7 +28,7 @@ export class ProductDetailComponent implements OnInit {
         this.loadProductDetails();
       } else {
         console.error('ID du produit introuvable dans les paramètres de l\'URL');
-        // Vous pouvez gérer cette situation comme bon vous semble, par exemple, rediriger vers une page d'erreur.
+
       }
     });
   }
