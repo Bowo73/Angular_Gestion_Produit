@@ -19,10 +19,10 @@ export class ProductService {
   ];
 
 
-  addProduct(product:{ productId: number; productName: string; productTexture: string; productGrammage: number; productColor: string }): Observable<void> {
-    // Logique d'ajout du produit ici, par exemple :
+  addProduct(product:Product): Observable<Product> {
+
     this.products.push(product);
-    return of<void>(undefined);
+    return of(product);
   }
 
   getProducts(): Observable<Product[]> {

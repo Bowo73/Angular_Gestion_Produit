@@ -9,7 +9,7 @@
 
 /* Styles pour les détails du produit */
 .product-detail {
-  border: 1px solid #ddd;
+  border: 1px solid #ffffff;
   padding: 10px;
   margin-bottom: 20px;
 
@@ -30,13 +30,13 @@
 /* Bouton d'enregistrement */
 .save-button {
   padding: 10px;
-  background-color: #4caf50;
+  background-color: #4c56af;
   color: #fff;
   border: none;
   cursor: pointer;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #40e749;
   }
 }
 

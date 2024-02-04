@@ -1,14 +1,9 @@
 export class Product {
-    public productId: number;
-    public productName: string;
-    public productTexture: string;
-    public productGrammage: number;
-    public productColor: string;
-    public constructor(id: number, name: string, texture: string, grammage: number, color: string) {
-        this.productId = id;
-        this.productName = name;
-        this.productTexture = texture;
-        this.productGrammage = grammage;
-        this.productColor = color;
-    }
+    public productId: number | null=0;
+    public productName: string | null="Produit 0";
+    public productTexture: string | null="Texture 0";
+    public productGrammage: number | null=0;
+    public productColor: string | null="Gris";
+
+
 }

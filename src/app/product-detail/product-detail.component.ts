@@ -24,8 +24,8 @@ export class ProductDetailComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const idParam = params.get('id');
       if (idParam !== null) {
-        this.productId = +idParam;
-        this.loadProductDetails();
+        this.productId = parseInt(idParam,10);
+        this.getProductDetails(this.productId);
       } else {
         console.error('ID du produit introuvable dans les paramètres de l\'URL');
 
@@ -45,6 +45,19 @@ export class ProductDetailComponent implements OnInit {
         }
       );
     }
+  }
+
+  private getProductDetails(productId: number): void {
+    // Appelez votre service pour obtenir les détails du produit par ID
+    this.productService.getProductById(productId).subscribe(
+      (product) => {
+        console.log('Product details:', product);
+        this.product = product;
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des détails du produit:', error);
+      }
+    );
   }
 
   saveProduct(): void {
