@@ -2,13 +2,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Product } from '../Model/product';
-
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  public constructor(private _httpClient: HttpClient) { }
+
   private products: Product[]= [
     { productId: 1, productName: 'Produit 1', productTexture: 'Texture 1', productGrammage: 100, productColor: 'Rouge' },
     { productId: 2, productName: 'Produit 2', productTexture: 'Texture 2', productGrammage: 200, productColor: 'Bleu' },
@@ -18,6 +20,7 @@ export class ProductService {
     // Ajoutez d'autres produits ici
   ];
 
+  private _products = this._httpClient.get<Product[]>('assets/products.json');
 
   addProduct(product:Product): Observable<Product> {
 

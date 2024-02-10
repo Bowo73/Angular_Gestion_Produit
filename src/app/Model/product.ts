@@ -1,3 +1,4 @@
+
 export class Product {
     public productId: number | null=0;
     public productName: string | null="Produit 0";
