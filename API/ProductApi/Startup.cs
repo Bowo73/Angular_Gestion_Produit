@@ -19,6 +19,16 @@ namespace ProductAPI
     public IConfiguration Configuration { get; }
     public void ConfigureServices(IServiceCollection services)
     {
+      services.AddCors(options =>
+      {
+        options.AddPolicy("AllowAll",
+            builder =>
+            {
+              builder.AllowAnyOrigin()
+                 .AllowAnyMethod()
+                 .AllowAnyHeader();
+            });
+      });
 
       services.AddDbContext<ProductContext>(options =>
         options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
@@ -37,6 +47,8 @@ namespace ProductAPI
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
+      app.UseCors("AllowAll");
+
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();

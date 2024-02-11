@@ -26,16 +26,7 @@ export class ProductListComponent implements OnInit {
       productColor: new FormControl('', Validators.required)
     });
   }
-/*
-  public onSubmit(): void {
-    this.product = new Product(
-      this.productForm.get('productId')?.value,
-      this.productForm.get('productName')?.value,
-      this.productForm.get('productTexture')?.value,
-      this.productForm.get('productGrammage')?.value,
-      this.productForm.get('productColor')?.value
-    );
-*/
+
   public onSubmit() {
     this.product = new Product();
     this.product.productId = this.productForm.value.productId!;
@@ -45,31 +36,10 @@ export class ProductListComponent implements OnInit {
     this.product.productColor = this.productForm.value.productColor;
     this.productService.addProduct(this.product);
     this.refreshProductList();
-
-    /*
-    // Ajouter le produit et rafraîchir la liste
-    this.productService.addProduct(this.product).subscribe(
-      (addedProduct) => {
-        console.log('Produit ajouté avec succès.');
-        this.refreshProductList();
-        this.productForm.reset(); // Réinitialiser le formulaire après la soumission
-
-        console.log('Liste des produits après l\'ajout:', this.products$);
-
-        // Naviguer vers la page de détails après avoir ajouté le produit
-        this.router.navigate(['/product-detail', addedProduct.productId]);
-      },
-      (error) => {
-        console.error('Erreur lors de l\'ajout du produit:', error);
-      }
-    );
-    */
   }
 
-
-
   ngOnInit(): void {
-    this.products$ = this.productService.getProducts();
+    this.refreshProductList();
   }
 
   private refreshProductList(): void {

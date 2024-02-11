@@ -24,7 +24,7 @@ namespace ProductAPI.Controllers
     }
 
     [HttpGet("{id}")]
-    public ActionResult<Product> GetProduct(int id)
+    public ActionResult<Product> GetProductById(int id)
     {
       var product = _context.Products.Find(id);
       if (product == null)
@@ -39,7 +39,7 @@ namespace ProductAPI.Controllers
     {
       _context.Products.Add(product);
       _context.SaveChanges();
-      return CreatedAtAction(nameof(GetProduct), new { id = product.productId }, product);
+      return CreatedAtAction(nameof(GetProductById), new { id = product.productId }, product);
     }
 
     [HttpPut("{id}")]
