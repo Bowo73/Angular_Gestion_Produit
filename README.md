@@ -1,6 +1,8 @@
 # GestionProduits
-Ce projet est celui de Rafik BOUKHEMIRI et Brice Trappler
+Ce projet est celui de Rafik BOUKHEMIRI et Brice Trappler.
+Ce projet contient une base de données MySql avec une table products, une API dotnet et une application Angular.
 
+Ne pas oublier de lancer la bdd et l'API avant de lancer l'Angular. Les scripts pour la bdd se trouvent dans le dossier database.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
 
