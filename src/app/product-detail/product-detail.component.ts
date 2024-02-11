@@ -62,7 +62,7 @@ export class ProductDetailComponent implements OnInit {
 
   saveProduct(): void {
     // Enregistrez le produit en utilisant le service
-    this.productService.updateProduct(this.product);
+    this.productService.updateProduct(this.product.productId, this.product);
     // Vous pouvez également rediriger l'utilisateur vers la liste des produits après l'enregistrement
     this.router.navigate(['/products']);
   }

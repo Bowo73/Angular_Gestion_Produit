@@ -9,6 +9,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductService {
+
+  private apiUrl = 'https://localhost:5001/';
+
   public constructor(private _httpClient: HttpClient) { }
 
   private products: Product[]= [
@@ -24,20 +27,20 @@ export class ProductService {
 
   addProduct(product:Product): Observable<Product> {
 
-    this.products.push(product);
-    return of(product);
+    return this._httpClient.post<any>(this.apiUrl, product);
+
   }
 
   getProducts(): Observable<Product[]> {
-    return of(this.products);
+    return this._httpClient.get<any[]>(this.apiUrl);
+    }
+
+  getProductById(productId: number): Observable<any> {
+    return this._httpClient.get<any>(`${this.apiUrl}/${productId}`);
   }
 
-  getProductById(id: number): Observable<any> {
-    return of(this.products.find(product => product.productId === id));
-  }
+  updateProduct(productId: number, product: any): Observable<any> {
+    return this._httpClient.put<any>(`${this.apiUrl}/${productId}`, product);
 
-  updateProduct(product: any): void {
-    // Ajout ou mise à jour du produit
-    // Assurez-vous d'implémenter la logique nécessaire ici
   }
 }
