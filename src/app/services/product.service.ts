@@ -12,7 +12,8 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-
+/// Commentaire thibaut : NON !!! mais je vois que vous avez cherché des solutions pour le problème de cors
+/// le pire aurait été de l'implémenter dans la partie dotnet
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

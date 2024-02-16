@@ -19,6 +19,10 @@ namespace ProductAPI
     public IConfiguration Configuration { get; }
     public void ConfigureServices(IServiceCollection services)
     {
+      /// Commentaire Thibaut : alors là, vous perdez immédiatement 5 points
+      /// c'est con, il aurait suffit d'écouter en cours, la sécurité, c'est un sujet sur lequel j'insiste.
+      /// Vous créez une faille de sécurité inacceptable pour un système professionnel
+      /// et pourtant, pour trouver cette solution, je ne doute pas que vous avez du travailler, faire des recherches...
       services.AddCors(options =>
       {
         options.AddPolicy("AllowAll",
