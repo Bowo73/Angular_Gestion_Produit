@@ -36,13 +36,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Commentaires
 
 Ok, c'est un bon travail dans l'ensemble. 
-Les parties asynchrones sont maitrisées, on voit que vous savez développer mais il y a quelques problèmes 
+Les parties asynchrones sont en bonne voie d'apprentissage, on voit que vous savez développer mais il y a quelques problèmes 
 dans votre code, sur 2 aspects qui me tiennent à coeur
 1. Angular : L'organisation des dossiers / des fichiers : je vous avais recommandé une structure des fichiers en angular (pages ou routeView, service) ou proposé celle d'angular (flat design) et vous êtes entre les 2
 2. Angular / API : La gestion des cors, il aurait suffit d'écouter en cours et de mettre en place un proxy-config (on le reverra ensemble)
 3. API : Problème d'organisation : la bdd n'est surement pas du ViewModel. (mais je n'ai pas enlevé de points pour ça, les -5 lié aux cors sont les seuls responsable du 15 au lieu du 20 pour la partie API)
 
 Note : 
-Angular : 16 (-3 pour organisation et -1 pour cors)
+Angular : 15 (-3 pour organisation et -1 pour cors -1 asynchrone)
 WebApi : 15
 

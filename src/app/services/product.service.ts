@@ -21,7 +21,7 @@ export class ProductService {
       }),
       mode: 'no-cors' // Définir le mode de la demande sur "no-cors"
     };
-
+    // non, pas comme ça
     return this.httpClient.get<Product[]>(this.apiUrl);
   }
 

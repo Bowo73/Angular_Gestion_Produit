@@ -34,6 +34,7 @@ export class ProductListComponent implements OnInit {
     this.product.productTexture = this.productForm.value.productTexture;
     this.product.productGrammage = this.productForm.value.productGrammage;
     this.product.productColor = this.productForm.value.productColor;
+    // commentaire thibaut et le subscribe ?
     this.productService.addProduct(this.product);
     this.refreshProductList();
   }
