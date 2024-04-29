@@ -1,0 +1,18 @@
+version: '3'
+services:
+ angular-app:
+    build:
+      context: ./Front
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    environment:
+      - NODE_ENV=production
+
+ dotnet-api:
+    build:
+      context: ./API/ProductApi
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:8081"

@@ -18,13 +18,13 @@ COPY . .
 CMD ["npm", "run", "docker"]
 
 # # Use a smaller, production-ready image as the final image
-# FROM nginx:alpine
+#FROM nginx:alpine
 
 # # Copy the production-ready Angular app to the Nginx webserver's root directory
-# COPY --from=builder /app/dist/fabrique_papier /usr/share/nginx/html
+#COPY --from=builder /app/Front/src /usr/share/nginx/html
 
 # # Exposez le port 80 pour accéder à l'application depuis l'extérieur du conteneur
-# EXPOSE 80
+#EXPOSE 8080
 
 # # La commande de démarrage par défaut pour l'image Nginx
-# CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]
