@@ -14,8 +14,6 @@ services:
     build:
       context: ../Front
       dockerfile: Dockerfile
-    ports:
-      - "8000:80"
     environment:
       - NODE_ENV=production
 
@@ -24,7 +22,7 @@ services:
       context: ../API/ProductApi
       dockerfile: Dockerfile
     ports:
-      - "3306:3306"
+      - "8080:8080"
  db:
     build:
       context: ../database
