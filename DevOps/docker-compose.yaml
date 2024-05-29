@@ -30,13 +30,15 @@ services:
     container_name: bdd_mysql
     environment:
       MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: gestion_produit
+      #MYSQL_DATABASE: gestion_produit
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
     ports:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
+     # - ../database/:/docker-entrypoint-initdb.d/
+
 
 volumes:
   db_data:
