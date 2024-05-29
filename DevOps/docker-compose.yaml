@@ -21,6 +21,8 @@ services:
     build:
       context: ../API/ProductApi
       dockerfile: Dockerfile
+    environment:
+      ConnectionStrings__DefaultConnection: "server=bdd_mysql;port=3306;database=gestion_produit;user=root;password=admin"
     ports:
       - "8080:8080"
  db:
