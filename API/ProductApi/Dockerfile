@@ -19,4 +19,4 @@ WORKDIR /app
 EXPOSE 8090
 EXPOSE 8081
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ProductApi.csproj.NET.dll"]
+ENTRYPOINT ["dotnet", "ProductApi.dll"]
