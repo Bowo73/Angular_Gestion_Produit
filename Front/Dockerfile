@@ -1,8 +1,8 @@
-FROM node:latest as build-stage
+FROM node:18-alpine as build-stage
 WORKDIR /app
 COPY . .
-RUN npm ci
+RUN npm install
 RUN npm run build
 
 FROM nginx:latest
-COPY --from=build-stage /app/dist/front/browser/ /usr/share/nginx/html/
+COPY --from=build-stage /app/dist/gestion-produits/ /usr/share/nginx/html/
