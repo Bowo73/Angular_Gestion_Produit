@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthInterceptor, AuthModule, LogLevel } from 'angular-auth-oidc-client';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,24 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule.forRoot({
+      config: {
+        authority: 'http://localhost:100/auth/realms/Papeterie',
+        redirectUrl: window.location.origin + '/postlogin',
+        postLogoutRedirectUri: window.location.origin + '/logouterror',
+        clientId: 'myclient',
+        scope: 'openid profile email offline_access',
+        responseType: 'code',
+        silentRenew: true,
+        useRefreshToken: true,
+        logLevel: LogLevel.Debug,
+        secureRoutes: ['api', '/api'],
+      }}),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
