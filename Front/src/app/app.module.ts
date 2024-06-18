@@ -27,10 +27,10 @@ import { AuthInterceptor, AuthModule, LogLevel } from 'angular-auth-oidc-client'
     ReactiveFormsModule,
     AuthModule.forRoot({
       config: {
-        authority: 'http://localhost:100/auth/realms/Papeterie',
+        authority: 'http://localhost:8090/auth/realms/Papeterie',
         redirectUrl: window.location.origin + '/postlogin',
         postLogoutRedirectUri: window.location.origin + '/logouterror',
-        clientId: 'myclient',
+        clientId: 'pap-client',
         scope: 'openid profile email offline_access',
         responseType: 'code',
         silentRenew: true,

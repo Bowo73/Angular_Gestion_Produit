@@ -7,6 +7,7 @@ using System;
 using ProductAPI.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace ProductAPI
 {
@@ -35,7 +36,7 @@ namespace ProductAPI
       });
 
       services.AddDbContext<ProductContext>(options =>
-        options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+        options.UseMySql(Configuration["ConnectionString"],
                              new MySqlServerVersion(new Version(8, 0, 28))));
 
 
@@ -47,6 +48,48 @@ namespace ProductAPI
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "Product API", Version = "v1" });
       });
+
+      services.AddAuthentication(options => {
+        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(options => {
+            options.Authority = Environment.GetEnvironmentVariable("App_Authority");
+            options.Audience = Environment.GetEnvironmentVariable("App_ClientId");
+            options.RequireHttpsMetadata = false;
+            options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+            {
+                ValidateIssuer = false,
+                ValidateAudience = false,
+            };
+        });
+            services.AddAuthorization();
+    services.AddSwaggerGen(options => {
+        var scheme = new OpenApiSecurityScheme
+        {
+            In = ParameterLocation.Header,
+            Name = "Authorization",
+            Flows = new OpenApiOAuthFlows
+            {
+                AuthorizationCode = new OpenApiOAuthFlow
+                {
+                    AuthorizationUrl = new Uri($"{Environment.GetEnvironmentVariable("App_SwaggerAuthority")}/protocol/openid-connect/auth"),
+                    TokenUrl = new Uri($"{Environment.GetEnvironmentVariable("App_SwaggerAuthority")}/protocol/openid-connect/token")
+                }
+            },
+            Type = SecuritySchemeType.OAuth2
+        };
+        options.AddSecurityDefinition("OAuth", scheme);
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement {
+            {
+                new OpenApiSecurityScheme {
+                    Reference = new OpenApiReference {Id = "OAuth", Type = ReferenceType.SecurityScheme }
+                },
+                new List<string>()
+            }
+        });
+        options.CustomSchemaIds(type => type.ToString());
+    });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -74,9 +117,10 @@ namespace ProductAPI
       // Middleware pour gérer les requêtes HTTP
       app.UseHttpsRedirection();
       app.UseRouting();
-      app.UseAuthorization();
+    app.UseAuthentication(); // Add authentication middleware
+    app.UseAuthorization(); // Add authorization middleware
 
-      app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllers();
       });

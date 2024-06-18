@@ -44,7 +44,10 @@ services:
       context: ../API/ProductApi
       dockerfile: Dockerfile
     environment:
-      ConnectionStrings__DefaultConnection: "server=bdd_mysql;port=3306;database=gestion_produit;user=root;password=admin"
+      ConnectionString: "server=bdd_mysql;port=3306;database=gestion_produit;user=root;password=admin"
+      App_Authority: http://localhost:8090/auth/realms/Papeterie
+      App_SwaggerAuthority: http://localhost:8090/auth/realms/Papeterie
+      App_ClientId: pap-client
     ports:
       - "8080:8080"
  db:

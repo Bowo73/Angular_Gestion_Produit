@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProductAPI.Models;
@@ -17,7 +18,7 @@ namespace ProductAPI.Controllers
       _context = context;
     }
 
-    [HttpGet]
+    [HttpGet] [Authorize]
     public ActionResult<IEnumerable<Product>> GetProducts()
     {
       return _context.Products.ToList();
@@ -67,4 +68,6 @@ namespace ProductAPI.Controllers
       return NoContent();
     }
   }
+
+
 }
