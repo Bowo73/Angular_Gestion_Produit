@@ -16,7 +16,7 @@ import { AuthInterceptor, AuthModule, LogLevel } from 'angular-auth-oidc-client'
   declarations: [
     AppComponent,
     ProductListComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,

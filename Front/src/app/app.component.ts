@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
+import { Router } from 'express';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,14 @@ import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
 })
 export class AppComponent implements OnInit {
   title = 'gestion-produits';
-  constructor(public oidcSecurityService: OidcSecurityService) {}
+
+  // constructor(public oidcSecurityService: OidcSecurityService) {}
+
+
+  constructor(
+    public oidcSecurityService: OidcSecurityService,
+  ) {
+  }
 
   ngOnInit() {
     this.oidcSecurityService
